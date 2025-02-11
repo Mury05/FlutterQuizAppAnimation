@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quiz_app/flip_effect.dart';
 import 'package:flutter_quiz_app/scoreboard.dart';
 import 'view_model.dart';
 
@@ -142,21 +143,24 @@ class AnswerCards extends StatelessWidget {
         if (correctAnswer == index) {
           color = Theme.of(context).colorScheme.tertiaryContainer;
         }
-        return Card.filled(
-          key: ValueKey(answers[index]),
-          color: color,
-          elevation: 2,
-          margin: EdgeInsets.all(8),
-          clipBehavior: Clip.hardEdge,
-          child: InkWell(
-            onTap: () => onTapped(index),
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Center(
-                child: Text(
-                  answers.length > index ? answers[index] : '',
-                  style: Theme.of(context).textTheme.titleMedium,
-                  overflow: TextOverflow.clip,
+        return CardFlipEffect(
+          duration: const Duration(milliseconds: 300),
+          child: Card.filled(
+            key: ValueKey(answers[index]),
+            color: color,
+            elevation: 2,
+            margin: EdgeInsets.all(8),
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+              onTap: () => onTapped(index),
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Center(
+                  child: Text(
+                    answers.length > index ? answers[index] : '',
+                    style: Theme.of(context).textTheme.titleMedium,
+                    overflow: TextOverflow.clip,
+                  ),
                 ),
               ),
             ),
