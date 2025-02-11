@@ -16,11 +16,12 @@ class HomeScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.displayLarge,
             ),
             Text(
-              'Flutter Quiz',
+              'Mury\'s Quiz',
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
                   fontWeight: FontWeight.w700,
                   color: Theme.of(context).colorScheme.onPrimaryFixedVariant),
             ),
+            SizedBox(height: 50,),
             ElevatedButton(
               onPressed: () {
                 // Show the question screen to start the game
