@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quiz_app/scoreboard.dart';
 import 'view_model.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -161,14 +162,7 @@ class StatusBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text(
-              'Question ${viewModel.answeredQuestionCount} / ${viewModel.totalQuestions}',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Text(
-              'Score: ${viewModel.score}',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            Scoreboard(score: viewModel.score, totalQuestions: viewModel.totalQuestions)
           ],
         ),
       ),
