@@ -88,12 +88,21 @@ class QuestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-     transitionBuilder: (child, animation) {
-  var offsetAnimation = animation
-      .drive(CurveTween(curve: Curves.easeInCubic))
-      .drive(Tween<Offset>(begin: Offset(-0.1, 0.0), end: Offset.zero));
-  return SlideTransition(position: offsetAnimation, child: child);
-},
+      layoutBuilder: (currentChild, previousChildren) {
+      return Stack(
+        alignment: Alignment.topCenter,
+        children: <Widget>[
+          ...previousChildren,
+          if (currentChild != null) currentChild,
+        ],
+      );
+    },
+      transitionBuilder: (child, animation) {
+        var offsetAnimation = animation
+            .drive(CurveTween(curve: Curves.easeInCubic))
+            .drive(Tween<Offset>(begin: Offset(-0.1, 0.0), end: Offset.zero));
+        return SlideTransition(position: offsetAnimation, child: child);
+      },
       duration: const Duration(milliseconds: 300),
       child: Card(
         key: ValueKey(question),
