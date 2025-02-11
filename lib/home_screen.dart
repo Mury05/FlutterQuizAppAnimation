@@ -11,17 +11,20 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              '✏️',
-              style: Theme.of(context).textTheme.displayLarge,
+           Icon(Icons.quiz_outlined, color: Colors.green.shade700, size: 100),
+           const SizedBox(
+              height: 20,
             ),
             Text(
               'Mury\'s Quiz',
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.onPrimaryFixedVariant),
+                  color: Theme.of(context).colorScheme.onPrimaryFixedVariant
+                  ),
             ),
-            SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
             ElevatedButton(
               onPressed: () {
                 // Show the question screen to start the game
@@ -34,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('New Game'),
+              child: const Text('New Game'),
             ),
           ],
         ),

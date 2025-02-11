@@ -22,7 +22,8 @@ class Scoreboard extends StatelessWidget {
   }
 }
 
-class AnimatedStar extends StatelessWidget {                   // Add from here...
+class AnimatedStar extends StatelessWidget {
+  // Add from here...
   final bool isActive;
   final Duration _duration = const Duration(milliseconds: 1000);
   final Color _deactivatedColor = Colors.grey.shade400;
@@ -35,10 +36,19 @@ class AnimatedStar extends StatelessWidget {                   // Add from here.
     return AnimatedScale(
       scale: isActive ? 1.0 : 0.5,
       duration: _duration,
-      child: Icon(
-        Icons.star,
-        size: 50,
-        color: isActive ? _activatedColor : _deactivatedColor,
+      child: TweenAnimationBuilder(
+        duration: _duration,
+        tween: ColorTween(
+          begin: _deactivatedColor,
+          end: isActive ? _activatedColor : _deactivatedColor,
+        ),
+        builder: (context, value, child) {
+          return Icon(
+            Icons.star,
+            size: 50,
+            color: value,
+          );
+        },
       ),
     );
   }
